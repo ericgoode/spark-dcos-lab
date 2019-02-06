@@ -1,11 +1,13 @@
 ## 1. Connect to the lab cluster (if not already done)
 
-```dcos cluster setup http://egoode-no-elasticl-aod2qsebzlxm-1269016722.us-west-2.elb.amazonaws.com
+```
+dcos cluster setup http://egoode-no-elasticl-aod2qsebzlxm-1269016722.us-west-2.elb.amazonaws.com
 ```
 
 ## 2. Install Enterprise CLI (if not already done)
 
-```dcos package install dcos-enterprise-cli
+```
+dcos package install dcos-enterprise-cli
 ```
 
 ## 3. Set up service account
@@ -59,7 +61,8 @@ dcos package install --options=/tmp/spark.json spark --yes
 
 You can verify the cli is ready and see available options by running
 
-```dcos spark
+```
+dcos spark
 ```
 
 ## 6.  Run the sample application
@@ -76,11 +79,13 @@ https://downloads.mesosphere.com/spark/assets/spark-examples_2.11-2.0.1.jar 30"
 
 ## 7. See the status of your job
 
-```dcos spark status <driver id>
+```
+dcos spark status <driver id>
 ```
 
 ## 8. See the output of the sample application
 
-```dcos spark log <driver id>
+```
+dcos spark log <driver id>
 
 
