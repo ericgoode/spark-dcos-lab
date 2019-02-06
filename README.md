@@ -1,6 +1,14 @@
-# spark-strict
+## 1. Connect to the lab cluster (if not already done)
 
-## 1. Install Spark in Strict Mode
+```dcos cluster setup http://egoode-no-elasticl-aod2qsebzlxm-1269016722.us-west-2.elb.amazonaws.com
+```
+
+## 2. Install Enterprise CLI (if not already done)
+
+```dcos package install dcos-enterprise-cli
+```
+
+## 3. Set up service account
 
 - Setup service account and secret
 
@@ -26,6 +34,8 @@ dcos security org users grant spark-principal dcos:mesos:master:task:user:root c
 dcos security org users grant dcos_marathon dcos:mesos:master:task:user:root create
 ```
 
+## 4. Create your custom configuration for Spark
+
 - Create a configurationfile **/tmp/spark.json** and set the Spark principal and secret
 
 ```json
@@ -41,13 +51,18 @@ cat <<EOF > /tmp/spark.json
 EOF
 ```
 
-- Install Spark using the config.json file
+## 5. Install Spark using the custom configuration file
 
 ```shell
 dcos package install --options=/tmp/spark.json spark --yes
 ```
 
-- Add the name of the principal to the Spark run command
+You can verify the cli is ready and see available options by running
+
+```dcos spark
+```
+
+## 6.  Run the sample application
 
 ```shell
 dcos spark run --verbose --submit-args=" \
@@ -58,3 +73,14 @@ dcos spark run --verbose --submit-args=" \
 --class org.apache.spark.examples.SparkPi \
 https://downloads.mesosphere.com/spark/assets/spark-examples_2.11-2.0.1.jar 30"
 ```
+
+## 7. See the status of your job
+
+```dcos spark status <driver id>
+```
+
+## 8. See the output of the sample application
+
+```dcos spark log <driver id>
+
+
