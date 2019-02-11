@@ -1,6 +1,12 @@
 ## 1. Connect to the lab cluster (if not already done)
 
 ```
+dcos cluster setup <cluster url>
+```
+
+For example:
+
+```
 dcos cluster setup http://egoode-no-elasticl-aod2qsebzlxm-1269016722.us-west-2.elb.amazonaws.com
 ```
 
