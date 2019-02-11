@@ -65,7 +65,9 @@ EOF
 dcos package install --options=/tmp/spark.json spark --yes
 ```
 
-You can verify the cli is ready and see available options by running
+You can verify the cli is ready and see available options by running.
+
+It might take a couple minutes for Spark to come fully online.
 
 ```
 dcos spark
